@@ -1,2 +1,2 @@
-# fusee-hydropneumatique-lycee-international
-Le code pour un APFSDS sauvage à propulsion hydraulique. 
+# Fusée hydropneumatique Lycée Inter
+## Le code pour un APFSDS sauvage à propulsion hydraulique. 
