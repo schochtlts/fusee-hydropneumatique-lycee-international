@@ -1,4 +1,13 @@
-void setup(void){}
+#include <SPI.h>
+#include <SD.h>
+
+#include "fichier.h"
+
+float altitude;
+
+void setup(void){
+  initSD();
+}
 
 void loop(void){
 /*
@@ -6,6 +15,7 @@ PROCESSUS DANS loop()
 
 1. Mesurer l'altitude. 
 2. Mesurer l'accélération. 
+2bis. enregistrer les deux
 
 3. Vérifier si Dh > 0. 
 4. Déclencher le parachute si nécéssaire. 
@@ -13,4 +23,7 @@ PROCESSUS DANS loop()
 4. Prendre 2 photos avec les caméras. 
 6. Enregistrer les photos. 
 */
+  while(altitude >= 0){
+    logSurSD(altitude);
+  }
 }
