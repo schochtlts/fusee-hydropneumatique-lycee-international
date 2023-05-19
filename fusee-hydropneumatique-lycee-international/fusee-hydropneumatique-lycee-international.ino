@@ -1,29 +1,29 @@
-#include <SPI.h>
-#include <SD.h>
+#include "MEM_SD.h"
 
-#include "fichier.h"
+#define FILE_PATH "data.csv"
 
-float altitude;
+File mainFile;
 
-void setup(void){
-  initSD();
+void setup(void)
+{
+	Serial.begin(9600);
+
+	if( !initSD() ) return;
+	if( !initWritingToFile(FILE_PATH, &mainFile) ) return;
 }
 
-void loop(void){
-/*
-PROCESSUS DANS loop()
+void loop(void)
+{
+	/*
+	PROCESSUS DANS loop()
 
-1. Mesurer l'altitude. 
-2. Mesurer l'accélération. 
-2bis. enregistrer les deux
+	1. Mesurer les vitesses angulaires et accélérations linéaires.
+	2. Corriger l'erreur statique sur les valeurs.
+	3. Prendre des photos avec les caméras.
+	
+	4. Convertir toutes les données en une suite de caractères.
+	5. Ecrire le string sur la carte SD.
 
-3. Vérifier si Dh > 0. 
-4. Déclencher le parachute si nécéssaire. 
-
-4. Prendre 2 photos avec les caméras. 
-6. Enregistrer les photos. 
-*/
-  while(altitude >= 0){
-    logSurSD(altitude);
-  }
+	6. Déclencher le parachute si nécéssaire. 
+	*/
 }
