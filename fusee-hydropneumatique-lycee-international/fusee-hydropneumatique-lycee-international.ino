@@ -1,4 +1,4 @@
-#include "MEM_SD.h"
+#include "carteSD.h"
 
 #define FILE_PATH "data.csv"
 
@@ -8,8 +8,11 @@ void setup(void)
 {
 	Serial.begin(9600);
 
-	if( !initSD() ) return;
-	if( !initWritingToFile(FILE_PATH, &mainFile) ) return;
+	if( initSD() ) goto terminate;
+	if( initWritingToFile(FILE_PATH, &mainFile) ) goto terminate;
+	return;
+
+	terminate: while(1); // Seul moyen de mettre fin au programme
 }
 
 void loop(void)
